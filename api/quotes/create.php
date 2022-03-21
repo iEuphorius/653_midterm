@@ -27,7 +27,14 @@ $quote->categoryId = $data->categoryId;
 // create quote
 if($quote->create()){
     $lastId = $db->lastInsertId();
-    echo "created quote(" .$lastId . "," . $quote->quote . "," . $quote->authorId . "," . $quote->categoryId . ")";
+    echo json_encode(
+        array(
+            "id"=>$lastId,
+            "quote"=>$quote->quote,
+            "authorId"=>$quote->authorId,
+            "categoryId"=>$quote->categoryId
+        )
+    );
 } else {
     echo json_encode(
         array('message'=> 'quote not Created')
