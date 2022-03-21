@@ -28,12 +28,7 @@ $quote->categoryId = $data->categoryId;
 if($quote->create()){
     $lastId = $db->lastInsertId();
     echo json_encode(
-        array(
-            "id"=>$lastId,
-            "quote"=>$quote->quote,
-            "authorId"=>$quote->authorId,
-            "categoryId"=>$quote->categoryId
-        )
+        array($lastId,$quote->quote,$quote->authorId,$quote->categoryId)
     );
 } else {
     echo json_encode(
