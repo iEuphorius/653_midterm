@@ -7,10 +7,10 @@
 $dataBase = new Database();
 $db = $dataBase->connect();
 
-// Instantiate blog post object
+// Instantiate category object
 $category = new Category($db);
 
-// Blog post query
+// category query
 $result = $category->read();
 // Get row count
 $num = $result->rowCount();
@@ -26,7 +26,7 @@ if($num > 0) {
         
         $category_item = array(
             'id'=>$id,
-            'author'=>$author,
+            'category'=>$category,
         );
 
         // Push to "data
@@ -38,7 +38,7 @@ if($num > 0) {
 } else {
     // No posts
     echo json_encode(
-        array('message'=>'No Posts Found')
+        array('message'=>'No categories Found')
         )    ;
 
 }
