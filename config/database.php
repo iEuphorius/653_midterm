@@ -4,8 +4,9 @@ class Database {
     private $url;
 
     function __construct(){
-        $this->url = getenv('JAWSDB_URL');
         $this->conn = null; // make sure no previous connections exist
+        $this->url = getenv('JAWSDB_URL');
+        
     }
 
     public function connect() {
@@ -14,12 +15,11 @@ class Database {
 
         $hostname = $dbparts['host'];
         $username = $dbparts['user'];
-        $password = $dbparts['password'];
+        $password = $dbparts['pass'];
         $database = ltrim($dbparts['path'],'/');
     
         try {
-            $this->conn = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
-            
+            $this->conn = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);            
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // set error mode
             echo "Connected successfully";
         } catch(PDOException $e) {

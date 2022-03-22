@@ -76,16 +76,14 @@
         public function read() {
             // Create query
             $query = 'SELECT 
-                c.categoryId,                
-                a.authorId,
                 q.id,
                 q.quote,
+                q.categoryId,                
+                q.authorId
             FROM
                 ' . $this->table . ' q
-                LEFT JOIN
-                    category c ON q.categoryId = c.id
                 Left JOIN
-                    author a ON q.authorId = a.id';
+                    categories c ON q.categoryId = c.id';
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -94,4 +92,37 @@
             $stmt->execute();
             return $stmt;
         }
+
+        // Get Single quotes
+        public function read_single() {
+            // Create query
+            $query = 'SELECT 
+                q.id,
+                q.quote,
+                q.categoryId,                
+                q.authorId
+            FROM
+                ' . $this->table . ' q
+                Left JOIN
+                    categories c ON q.categoryId = c.id
+            WHERE 
+                q.id = ?
+            LIMIT 0,1';
+
+            // Prepare Statement
+            $stmt = $this->conn->prepare($query);
+
+            // Bind ID
+            $stmt->bindParam(1, $this->id);
+            $stmt->execute();
+            
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            //set properties
+            $this->id = $row['id'];
+            $this->quote = $row['quote'];
+            $this->categoryId = $row['categoryId'];
+            $this->authorId = $row['authorId'];
+        }
+
     }
