@@ -1,5 +1,5 @@
 <?php
-    include_once '../../config/Database.php';
+    include_once '../../config/database.php';
     include_once '../../models/quote.php';
 
     // Instantiate DC & connect

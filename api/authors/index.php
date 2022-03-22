@@ -9,6 +9,9 @@
         header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With');
     }
 
+    include_once '../../config/database.php';
+    include_once '../../models/author.php';
+
     $database = new Database();
     $db = $database->connect();
 
