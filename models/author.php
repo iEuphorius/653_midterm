@@ -62,4 +62,21 @@
             printf("Error: %s.\n", $stmt->error);
             return false;
         }
+
+        // read author
+        public function read() {
+            // Create query
+            $query = 'SELECT 
+                a.id,
+                a.author
+            FROM
+                ' . $this->table . ' a';
+
+            // Prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            //Execute query
+            $stmt->execute();
+            return $stmt;
+        }
     }

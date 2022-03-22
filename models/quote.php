@@ -71,4 +71,27 @@
             printf("Error: %s.\n", $stmt->error);
             return false;
         }
+
+        //Get quotes
+        public function read() {
+            // Create query
+            $query = 'SELECT 
+                c.categoryId,                
+                a.authorId,
+                q.id,
+                q.quote,
+            FROM
+                ' . $this->table . ' q
+                LEFT JOIN
+                    category c ON q.categoryId = c.id
+                Left JOIN
+                    author a ON q.authorId = a.id';
+
+            // Prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            //Execute query
+            $stmt->execute();
+            return $stmt;
+        }
     }

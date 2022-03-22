@@ -1,42 +1,40 @@
 <?php
     include_once '../../config/Database.php';
-    include_once '../../models/quote.php';
+    include_once '../../models/author.php';
 
     // Instantiate DC & connect
 
 $dataBase = new Database();
 $db = $dataBase->connect();
 
-// Instantiate quote object
-$quote = new Quote($db);
+// Instantiate blog post object
+$author = new Author($db);
 
-// quotes query
-$result = $quote->read();
+// Blog post query
+$result = $author->read();
 // Get row count
 $num = $result->rowCount();
 
-// Check if any quotes
+// Check if any posts
 if($num > 0) {
-    // quote array
-    $quote_arr = array();
-    $quote_arr['data'] = array();
+    // Post array
+    $author_arr = array();
+    $author_arr['data'] = array();
 
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
         
-        $quote_item = array(
+        $author_item = array(
             'id'=>$id,
-            'authorId'=>$authorId,
-            'categoryId'=> $category_id,
-            'quote'=> $quote
+            'author'=>$author,
         );
 
         // Push to "data
-        array_push($quote_arr['data'], $quote_item);
+        array_push($author_arr['data'], $author_item);
     }
 
     // Turn to JSON
-    echo json_encode($quote_arr);
+    echo json_encode($author_arr);
 } else {
     // No posts
     echo json_encode(
