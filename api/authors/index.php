@@ -9,6 +9,9 @@
         header('Access-Control-Allow-Headers: Origin, Accept, Content-Type, X-Requested-With');
     }
 
+    $database = new Database();
+    $db = $database->connect();
+
     switch ($method) {
         case "GET":
             require_once('read.php');
