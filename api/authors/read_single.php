@@ -19,11 +19,7 @@ $author->read_single();
 // create array
 $author_arr = array(
     'id'=> $author->id,
-    'title'=> $author->title,
-    'body'=> $author->body,
-    'author'=> $author->author,
-    'category_id'=> $author->category_id,
-    'category_name'=> $author->category_name
+    'author'=> $author->author
 );
 
 // make json data

@@ -17,7 +17,12 @@
 
     switch ($method) {
         case "GET":
-            require_once('read.php');
+            if((isset($_GET['id'])!=null)){
+                require_once('read_single.php');
+            }else {
+                require_once('read.php');
+            }
+            
             break;
         case "POST":
             require_once('create.php');
@@ -25,7 +30,7 @@
         case "PUT":
             require_once('update.php');
             break;
-        case "DELETE":
+        case "HEAD":
             require_once('delete.php');
             break;
         default:
