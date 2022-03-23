@@ -7,23 +7,23 @@
 $dataBase = new Database();
 $db = $dataBase->connect();
 
-// Instantiate category object
-$category = new Category($db);
+// Instantiate quote object
+$quote = new Quote($db);
 
-// get raw category data
+// get raw quote data
 $data = json_decode(file_get_contents("php://input"));
 
 // set ID to update
-$category->id = $data->id;
-$category->category = $data->category;
+$quote->id = $data->id;
+$quote->category = $data->quote;
 
-// update category
-if($category->update()){
+// update quote
+if($quote->update()){
     echo json_encode(
-        array('message'=> 'Category Updated')
+        array('message'=> 'Quote Updated')
     );
 } else {
     echo json_encode(
-        array('message'=> 'Category not Updated')
+        array('message'=> 'quote not Updated')
     );
 }

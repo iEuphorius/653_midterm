@@ -15,9 +15,9 @@ $result = $category->read();
 // Get row count
 $num = $result->rowCount();
 
-// Check if any posts
+// Check if any categories
 if($num > 0) {
-    // Post array
+    // categories array
     $category_arr = array();
 
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
@@ -35,7 +35,7 @@ if($num > 0) {
     // Turn to JSON
     echo json_encode($category_arr);
 } else {
-    // No posts
+    // No categories
     echo json_encode(
         array('message'=>'No categories Found')
         )    ;

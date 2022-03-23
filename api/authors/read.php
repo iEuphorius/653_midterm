@@ -15,10 +15,11 @@ $result = $author->read();
 // Get row count
 $num = $result->rowCount();
 
-// Check if any posts
+// Check if any author
 if($num > 0) {
-    // Post array
+    // author array
     $author_arr = array();
+    $author_arr['data'] = array();
 
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
         extract($row);
@@ -29,13 +30,13 @@ if($num > 0) {
         );
 
         // Push to "data
-        array_push($author_arr[], $author_item);
+        array_push($author_arr['data'], $author_item);
     }
 
     // Turn to JSON
     echo json_encode($author_arr);
 } else {
-    // No posts
+    // No author
     echo json_encode(
         array('message'=>'No Authors Found')
         );
