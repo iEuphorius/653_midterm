@@ -20,7 +20,7 @@ if($_GET['id'] != null){
     $quote_arr = array(
         'id'=>$id,
         'quote'=> $quote,
-        'categoryName'=>$categoryName,                
+        'category'=>$categoryName,                
         'author'=>$authorName
     );
 
