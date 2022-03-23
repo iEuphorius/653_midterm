@@ -29,16 +29,16 @@
             break;
         case "POST":
             if(isset($_GET['author']) == null){
-                echo json_encode(
-                    array('message'=> 'Missing Required Parameters'));
+                echo json_encode(array('message'=> 'Missing Required Parameters'));
+                break;
             } else{
             require_once('create.php');
             break;
             }
         case "PUT":
             if(isset($_GET['author']) == null){
-                echo json_encode(
-                    array('message'=> 'Missing Required Parameters'));
+                echo json_encode(array('message'=> 'Missing Required Parameters'));
+                break;
             } else{
             require_once('update.php');
             break;
