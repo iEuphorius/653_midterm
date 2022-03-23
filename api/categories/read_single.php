@@ -24,7 +24,7 @@ if($_GET['id'] != null){
 
     // make json data
     if($category_arr['id'] == null) {
-        $message = array('message'=>'CategoryId Not Found');
+        $message = array('message'=>'categoryId Not Found');
         echo json_encode($message);
     } else {
         echo json_encode($category_arr);

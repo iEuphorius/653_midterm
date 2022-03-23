@@ -19,7 +19,8 @@ $author->id = $data->id;
 
 // Delete author
 if($author->delete()){
-    echo json_encode($author->id);
+    $message = array('id'=>$author->id);
+    echo json_encode($message);
 } else {
     echo json_encode(
         array('message'=> 'Author not deleted')

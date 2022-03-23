@@ -19,7 +19,8 @@ $category->id = $data->id;
 
 // Delete category
 if($category->delete()){
-    echo $category->id;
+    $message = array('id'=>$category->id);
+    echo json_encode($message);
 } else {
     echo json_encode(
         array('message'=> 'Category not deleted')
