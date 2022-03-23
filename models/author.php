@@ -89,7 +89,7 @@
             FROM
                 ' . $this->table . '
             WHERE 
-                q.id = ?
+                a.id = ?
             LIMIT 0,1';
 
             // Prepare Statement
