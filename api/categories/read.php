@@ -29,7 +29,7 @@ if($num > 0) {
         );
 
         // Push to "data
-        array_push($category_arr['data'], $category_item);
+        array_push($category_arr, $category_item);
     }
 
     // Turn to JSON
