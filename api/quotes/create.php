@@ -27,7 +27,7 @@ if($quote->create()){
         'categoryId' => $quote->categoryId
     );
     echo json_encode(
-        array($lastId,$quote->quote,$quote->authorId,$quote->categoryId)
+        array($message)
     );
 } else {
     echo json_encode(

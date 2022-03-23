@@ -19,7 +19,7 @@ if($category->create()){
     $lastId = $db->lastInsertId();
     $message = array(
         'id' => $lastId,
-        'author' => $category->category
+        'category' => $category->category
     );
     echo json_encode($message);
 } else {

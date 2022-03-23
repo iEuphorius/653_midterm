@@ -24,11 +24,21 @@
             require_once('read.php');
             break;
         case "POST":
-            require_once('create.php');
-            break;
+            if(isset($_GET['quote']) == null){
+                echo json_encode(
+                    array('message'=> 'Missing Required Parameters'));
+            } else{
+                require_once('create.php');
+                break;
+            }
         case "PUT":
-            require_once('update.php');
-            break;
+            if(isset($_GET['quote']) == null){
+                echo json_encode(
+                    array('message'=> 'Missing Required Parameters'));
+            } else{
+                require_once('update.php');
+                break;
+            }
         case "DELETE":
             require_once('delete.php');
             break;

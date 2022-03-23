@@ -138,9 +138,9 @@
             // create query
             $query = 'UPDATE ' . 
                 $this->table . '
-                quote = :quote,
-                authorId = :authorId,
-                categoryId = :categoryId
+                    quote = :quote,
+                    authorId = :authorId,
+                    categoryId = :categoryId
                 WHERE
                     id = ?';
 
