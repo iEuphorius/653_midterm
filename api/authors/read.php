@@ -39,6 +39,6 @@ if($num > 0) {
     // No posts
     echo json_encode(
         array('message'=>'No Posts Found')
-        )    ;
+        );
 
 }

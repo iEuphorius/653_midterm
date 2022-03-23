@@ -16,6 +16,9 @@
 
     switch ($method) {
         case "GET":
+            require_once('read_single.php');
+            break;
+        case "HEAD":
             require_once('read.php');
             break;
         case "POST":

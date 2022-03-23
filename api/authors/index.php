@@ -17,12 +17,10 @@
 
     switch ($method) {
         case "GET":
-            if((isset($_GET['id'])!=null)){
-                require_once('read_single.php');
-            }else {
-                require_once('read.php');
-            }
-            
+            require_once('read_single.php');
+            break;
+        case "HEAD":
+            require_once('read.php');
             break;
         case "POST":
             require_once('create.php');

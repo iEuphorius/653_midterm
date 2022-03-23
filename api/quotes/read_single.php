@@ -6,23 +6,29 @@
 
 $dataBase = new Database();
 $db = $dataBase->connect();
+if($_GET['id'] != null){
+    // Instantiate blog post object
+    $quote = new Quote($db);
 
-// Instantiate blog post object
-$quote = new Quote($db);
+    // get id from url
+    $quote->id = $_GET['id'];
 
-// get id from url
-$quote->id = $_GET['id'];
+    // get post
+    $quote->read_single();
 
-// get post
-$quote->read_single();
+    // create array
+    $quote_arr = array(
+        'id'=> $quote->id,
+        'author'=> $quote->quote,
+        'authorId'=> $quote->authorId,
+        'categoryId'=> $quote->categoryId,
+    );
 
-// create array
-$quote_arr = array(
-    'id'=> $quote->id,
-    'author'=> $quote->quote,
-    'authorId'=> $quote->authorId,
-    'categoryId'=> $quote->categoryId,
-);
+    // make json data
+    echo (json_encode($quote_arr));
 
-// make json data
-print_r(json_encode($quote_arr));
+} else {
+    echo json_encode(
+        array('message'=>'authorId Not Found')
+        );
+}
