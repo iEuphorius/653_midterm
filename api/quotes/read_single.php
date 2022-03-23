@@ -7,13 +7,13 @@
 $dataBase = new Database();
 $db = $dataBase->connect();
 if($_GET['id'] != null){
-    // Instantiate blog post object
+    // Instantiate quote object
     $quote = new Quote($db);
 
     // get id from url
     $quote->id = $_GET['id'];
 
-    // get post
+    // get quote
     $quote->read_single();
 
     // create array
