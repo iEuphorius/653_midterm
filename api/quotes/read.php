@@ -27,8 +27,8 @@ if($num > 0) {
         $quote_item = array(
             'id'=>$id,
             'quote'=> $quote,
-            'categoryId'=>$categoryId,                
-            'authorId'=>$authorId            
+            'categoryName'=>$categoryName,                
+            'author'=>$author          
         );
 
         // Push to "data
