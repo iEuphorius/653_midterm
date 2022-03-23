@@ -23,7 +23,11 @@ if($_GET['id'] != null){
     );
 
     // make json data
+    if($author_arr['id'] == null) {
+        array('message'=>'authorId Not Found');
+    } else {
     echo json_encode($author_arr);
+    }
 } else {
     echo json_encode(
         array('message'=>'authorId Not Found')
