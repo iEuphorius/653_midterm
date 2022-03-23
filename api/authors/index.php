@@ -16,10 +16,10 @@
     $db = $database->connect();
 
     switch ($method) {
-        case "GET":
+        case "HEAD":
             require_once('read_single.php');
             break;
-        case "HEAD":
+        case "GET":
             require_once('read.php');
             break;
         case "POST":

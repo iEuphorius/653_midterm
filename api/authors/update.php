@@ -22,6 +22,6 @@ if($category->update()){
     echo "updated author(" . $author->id . "," . $author->author . ")";
 } else {
     echo json_encode(
-        array('message'=> 'Category not Updated')
+        array('message'=> 'Author not Updated')
     );
 }
