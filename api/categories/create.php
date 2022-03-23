@@ -17,7 +17,11 @@ $category->category = $data->category;
 // create category
 if($category->create()){
     $lastId = $db->lastInsertId();
-    echo "created category(" .$lastId . "," . $category->$categoryId . ")";
+    $message = array(
+        'id' => $lastId,
+        'author' => $category->category
+    );
+    echo json_encode($message);
 } else {
     echo json_encode(
         array('message'=> 'Category not Created')

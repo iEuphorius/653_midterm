@@ -75,6 +75,30 @@
         //Get quotes
         public function read() {
             // Create query
+            if(isset($_GET['authorId']) and isset($_GET['categoryId']) ) {
+                $query = 'SELECT 
+                q.id,
+                q.quote,
+                q.categoryId,
+                q.authorId,             
+                a.author as authorName,
+                c.category as categoryName
+            FROM
+                ' . $this->table . ' q
+                LEFT JOIN
+                    categories c on q.categoryId = c.id
+                LEFT JOIN
+                    authors a on q.authorId = a.id
+                WHERE
+                    q.authorId = ?';
+
+            // Prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            //Execute query
+            $stmt->execute();
+            return $stmt;
+            }
             $query = 'SELECT 
                 q.id,
                 q.quote,
