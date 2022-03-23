@@ -28,7 +28,7 @@ if($num > 0) {
             'id'=>$id,
             'quote'=> $quote,
             'categoryName'=>$categoryName,                
-            'author'=>$author          
+            'author'=>$authorName          
         );
 
         // Push to "data

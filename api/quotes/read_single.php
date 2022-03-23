@@ -18,10 +18,10 @@ if($_GET['id'] != null){
 
     // create array
     $quote_arr = array(
-        'id'=> $quote->id,
-        'author'=> $quote->quote,
-        'authorId'=> $quote->authorId,
-        'categoryId'=> $quote->categoryId,
+        'id'=>$id,
+        'quote'=> $quote,
+        'categoryName'=>$categoryName,                
+        'author'=>$authorName
     );
 
     // make json data

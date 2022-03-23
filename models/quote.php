@@ -77,15 +77,17 @@
             // Create query
             $query = 'SELECT 
                 q.id,
-                q.quote,             
-                a.author as author,
-                c.name as categoryName
+                q.quote,
+                q.categoryId,
+                q.authorId,             
+                a.author as authorName,
+                c.category as categoryName
             FROM
                 ' . $this->table . ' q
                 LEFT JOIN
-                    categories c on q.categoryId = c.category
+                    categories c on q.categoryId = c.id
                 LEFT JOIN
-                    authors a on a.authorId = a.author';
+                    authors a on q.authorId = a.id';
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -101,10 +103,16 @@
             $query = 'SELECT 
                 q.id,
                 q.quote,
-                q.categoryId,                
-                q.authorId
+                q.categoryId,
+                q.authorId,             
+                a.author as authorName,
+                c.category as categoryName
             FROM
-                ' . $this->table . ' q 
+                ' . $this->table . ' q
+            LEFT JOIN
+                categories c on q.categoryId = c.id
+            LEFT JOIN
+                authors a on q.authorId = a.id
             WHERE 
                 q.id = ?
             LIMIT 0,1';
