@@ -87,9 +87,9 @@
                 a.id,
                 a.author
             FROM
-                ' . $this->table . '
+                ' . $this->table . ' a
             WHERE 
-                a.id = ?
+                q.id = ?
             LIMIT 0,1';
 
             // Prepare Statement
@@ -103,6 +103,8 @@
 
             //set properties
             $this->id = $row['id'];
-            $this->author = $row['author'];
+            $this->quote = $row['quote'];
+            $this->categoryId = $row['categoryId'];
+            $this->author = $row['authorId'];
         }
     }

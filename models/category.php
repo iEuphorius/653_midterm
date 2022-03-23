@@ -102,7 +102,7 @@
                 c.id,
                 c.category
             FROM
-                ' . $this->table . ' a';
+                ' . $this->table . ' c';
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -119,7 +119,7 @@
                 c.id,
                 c.category
             FROM
-                ' . $this->table . '
+                ' . $this->table . ' c
             WHERE 
                 c.id = ?
             LIMIT 0,1';

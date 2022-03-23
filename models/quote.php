@@ -81,9 +81,7 @@
                 q.categoryId,                
                 q.authorId
             FROM
-                ' . $this->table . ' q
-                Left JOIN
-                    categories c ON q.categoryId = c.id';
+                ' . $this->table . ' q';
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -102,9 +100,7 @@
                 q.categoryId,                
                 q.authorId
             FROM
-                ' . $this->table . ' q
-                Left JOIN
-                    categories c ON q.categoryId = c.id
+                ' . $this->table . ' q 
             WHERE 
                 q.id = ?
             LIMIT 0,1';
