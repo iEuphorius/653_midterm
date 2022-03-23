@@ -18,7 +18,7 @@ $author->id = $data->id;
 $author->author = $data->author;
 
 // update category
-if($category->update()){
+if($author->update()){
     $message = array(
         'id' => $author->id,
         'author' => $author->author

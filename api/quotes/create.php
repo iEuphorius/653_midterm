@@ -20,6 +20,12 @@ $quote->categoryId = $data->categoryId;
 // create quote
 if($quote->create()){
     $lastId = $db->lastInsertId();
+    $message = array(
+        'id' => $lastId,
+        'quote' => $quote,
+        'authorId' => $quote->authorId,
+        'categoryId' => $quote->categoryId
+    );
     echo json_encode(
         array($lastId,$quote->quote,$quote->authorId,$quote->categoryId)
     );

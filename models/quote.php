@@ -142,7 +142,9 @@
                 $this->table . '
                 quote = :quote,
                 authorId = :authorId,
-                categoryId = :categoryId';
+                categoryId = :categoryId
+                WHERE
+                    id = ?';
 
             // prepare statement
             $stmt = $this->conn->prepare($query);

@@ -21,7 +21,7 @@ $category->category = $data->category;
 if($category->update()){
     $message = array(
         'id' => $category->id,
-        'author' => $category->category
+        'category' => $category->category
     );
     echo json_encode($message);
 } else {

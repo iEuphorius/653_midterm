@@ -22,7 +22,7 @@ $quote->categoryId = $data->categoryId;
 // update quote
 if($quote->update()){
     $message = array(
-        'id' => $category->id,
+        'id' => $quote->id,
         'quote' => $quote->quote,
         'authorId' => $quote->authorId,
         'categoryId' => $quote->categoryId
