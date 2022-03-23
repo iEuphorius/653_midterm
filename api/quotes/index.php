@@ -15,10 +15,11 @@
     $db = $database->connect();
 
     switch ($method) {
-        case "HEAD":
-            require_once('read_single.php');
-            break;
         case "GET":
+            if($_GET['id'] != null) {
+                require_once('read_single.php');
+                break;
+            }
             require_once('read.php');
             break;
         case "POST":
