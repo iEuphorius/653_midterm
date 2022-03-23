@@ -77,11 +77,15 @@
             // Create query
             $query = 'SELECT 
                 q.id,
-                q.quote,
-                q.categoryId,                
-                q.authorId
+                q.quote,             
+                a.author,
+                c.name
             FROM
-                ' . $this->table . ' q';
+                ' . $this->table . ' q
+                LEFT JOIN
+                    categories c on q.categoryId = c.category
+                LEFT JOIN
+                    authors a on a.authorId = a.author';
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);
