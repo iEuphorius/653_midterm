@@ -23,7 +23,11 @@ if($_GET['id'] != null){
     );
 
     // make json data
-    echo(json_encode($category_arr));
+    if($category_arr['id'] == null) {
+        echo array('message'=>'authorId Not Found');
+    } else {
+        echo json_encode($category_arr);
+    }
 
 } else {
     echo json_encode(
