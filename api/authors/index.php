@@ -28,7 +28,7 @@
         case "PUT":
             require_once('update.php');
             break;
-        case "HEAD":
+        case "DELETE":
             require_once('delete.php');
             break;
         default:
