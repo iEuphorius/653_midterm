@@ -23,7 +23,9 @@
             SET
                 quote = :quote,
                 authorId = :authorId,
-                categoryId = :categoryId';
+                categoryId = :categoryId
+            WHERE
+                id = ?';
 
             // prepare statement
             $stmt = $this->conn->prepare($query);
@@ -131,6 +133,38 @@
             $this->quote = $row['quote'];
             $this->categoryId = $row['categoryId'];
             $this->authorId = $row['authorId'];
+        }
+
+        // update author
+        public function update() {
+            // create query
+            $query = 'UPDATE ' . 
+                $this->table . '
+                quote = :quote,
+                authorId = :authorId,
+                categoryId = :categoryId';
+
+            // prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            // clean data
+            $this->quote = htmlspecialchars(strip_tags($this->quote));
+            $this->authorId = htmlspecialchars(strip_tags($this->authorId));
+            $this->categoryId = htmlspecialchars(strip_tags($this->categoryId));
+
+            // bind data
+            $stmt->bindParam(':quote', $this->quote);
+            $stmt->bindParam(':authorId', $this->authorId);
+            $stmt->bindParam(':categoryId', $this->categoryId);
+
+            // execute query
+            if($stmt->execute()){
+                return true;
+            }
+
+            // print error if issue occurs
+            printf("Error: %s.\n", $stmt->error);
+            return false;
         }
 
     }

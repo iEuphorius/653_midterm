@@ -105,4 +105,32 @@
             $this->id = $row['id'];
             $this->author = $row['author'];
         }
+
+        // update author
+        public function update() {
+            // create query
+            $query = 'UPDATE ' . 
+            $this->table . '
+            SET
+                author = :author
+            WHERE 
+                id = :id';
+
+            // prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            // clean data
+            $this->author = htmlspecialchars(strip_tags($this->author));
+
+            // bind data
+            $stmt->bindParam(':author', $this->author);
+            // execute query
+            if($stmt->execute()){
+                return true;
+            }
+
+            // print error if issue occurs
+            printf("Error: %s.\n", $stmt->error);
+            return false;
+        }
     }
