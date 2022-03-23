@@ -26,7 +26,7 @@ if($_GET['id'] != null){
 
     // make json data
     if($quote_arr['id'] == null) {
-        $message = array('message'=>'authorId Not Found');
+        $message = array('message'=>'No Quotes Found');
         echo json_encode($message);
     } else {
         echo json_encode($quote_arr);
