@@ -78,8 +78,8 @@
             $query = 'SELECT 
                 q.id,
                 q.quote,             
-                a.author,
-                c.name
+                a.author as author,
+                c.name as categoryName
             FROM
                 ' . $this->table . ' q
                 LEFT JOIN
