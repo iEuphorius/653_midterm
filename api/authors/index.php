@@ -20,7 +20,7 @@
 
     switch ($method) {
         case "GET":
-            if($_GET[id] != null) {
+            if($_GET['id'] != null) {
                 require_once('read_single.php');
             }
             require_once('read.php');
