@@ -25,10 +25,10 @@ if($num > 0) {
         extract($row);
             
         $quote_item = array(
-            'id'=>$id,
+            'id'=> $id,
             'quote'=> $quote,
-            'category'=>$categoryName,                
-            'author'=>$authorName          
+            'category'=> $categoryName,                
+            'author'=> $authorName          
         );
 
         // Push to "data

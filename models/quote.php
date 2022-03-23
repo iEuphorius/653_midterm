@@ -77,48 +77,102 @@
             // Create query
             if(isset($_GET['authorId']) and isset($_GET['categoryId']) ) {
                 $query = 'SELECT 
-                q.id,
-                q.quote,
-                q.categoryId,
-                q.authorId,             
-                a.author as authorName,
-                c.category as categoryName
-            FROM
-                ' . $this->table . ' q
-                LEFT JOIN
-                    categories c on q.categoryId = c.id
-                LEFT JOIN
-                    authors a on q.authorId = a.id
-                WHERE
-                    q.authorId = ?';
+                    q.id,
+                    q.quote,
+                    q.categoryId,
+                    q.authorId,             
+                    a.author as authorName,
+                    c.category as categoryName
+                FROM
+                    ' . $this->table . ' q
+                    LEFT JOIN
+                        categories c on q.categoryId = c.id
+                    LEFT JOIN
+                        authors a on q.authorId = a.id
+                    WHERE
+                        q.authorId = ?
+                    AND
+                        q.categoryId = ?';
 
-            // Prepare statement
-            $stmt = $this->conn->prepare($query);
+                // Prepare statement
+                $stmt = $this->conn->prepare($query);
 
-            //Execute query
-            $stmt->execute();
-            return $stmt;
+                //Execute query
+                $stmt->execute();
+                return $stmt;
             }
-            $query = 'SELECT 
-                q.id,
-                q.quote,
-                q.categoryId,
-                q.authorId,             
-                a.author as authorName,
-                c.category as categoryName
-            FROM
-                ' . $this->table . ' q
-                LEFT JOIN
-                    categories c on q.categoryId = c.id
-                LEFT JOIN
-                    authors a on q.authorId = a.id';
 
-            // Prepare statement
-            $stmt = $this->conn->prepare($query);
+            elseif(isset($_GET['authorId'])) {
+                $query = 'SELECT 
+                    q.id,
+                    q.quote,
+                    q.categoryId,
+                    q.authorId,             
+                    a.author as authorName,
+                    c.category as categoryName
+                FROM
+                    ' . $this->table . ' q
+                    LEFT JOIN
+                        categories c on q.categoryId = c.id
+                    LEFT JOIN
+                        authors a on q.authorId = a.id
+                    WHERE
+                        q.authorId = ?';
 
-            //Execute query
-            $stmt->execute();
-            return $stmt;
+                // Prepare statement
+                $stmt = $this->conn->prepare($query);
+
+                //Execute query
+                $stmt->execute();
+                return $stmt;
+            }
+
+            elseif(isset($_GET['categoryId'])) {
+                $query = 'SELECT *
+                    q.id,
+                    q.quote,
+                    q.categoryId,
+                    q.authorId,             
+                    a.author as authorName,
+                    c.category as categoryName
+                FROM
+                    ' . $this->table . ' q
+                    LEFT JOIN
+                        categories c on q.categoryId = c.id
+                    LEFT JOIN
+                        authors a on q.authorId = a.id
+                    WHERE
+                        q.categoryId = ?';
+
+                // Prepare statement
+                $stmt = $this->conn->prepare($query);
+
+                //Execute query
+                $stmt->execute();
+                return $stmt;
+            } 
+            else {
+                $query = 'SELECT 
+                    q.id,
+                    q.quote,
+                    q.categoryId,
+                    q.authorId,             
+                    a.author as authorName,
+                    c.category as categoryName
+                FROM
+                    ' . $this->table . ' q
+                    LEFT JOIN
+                        categories c on q.categoryId = c.id
+                    LEFT JOIN
+                        authors a on q.authorId = a.id';
+
+                // Prepare statement
+                $stmt = $this->conn->prepare($query);
+
+                //Execute query
+                $stmt->execute();
+                return $stmt;
+            }
         }
 
         // Get Single quotes
@@ -153,8 +207,8 @@
             //set properties
             $this->id = $row['id'];
             $this->quote = $row['quote'];
-            $this->categoryId = $row['categoryId'];
-            $this->authorId = $row['authorId'];
+            $this->author = $row['authorName'];
+            $this->category = $row['categoryName'];
         }
 
     }

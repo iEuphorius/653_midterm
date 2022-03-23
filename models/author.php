@@ -103,8 +103,6 @@
 
             //set properties
             $this->id = $row['id'];
-            $this->quote = $row['quote'];
-            $this->categoryId = $row['categoryId'];
-            $this->author = $row['authorId'];
+            $this->author = $row['author'];
         }
     }
