@@ -23,9 +23,7 @@
             SET
                 quote = :quote,
                 authorId = :authorId,
-                categoryId = :categoryId
-            WHERE
-                id = ?';
+                categoryId = :categoryId';
 
             // prepare statement
             $stmt = $this->conn->prepare($query);
