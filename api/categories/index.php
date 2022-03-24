@@ -26,21 +26,11 @@
             require_once('read.php');
             break;
         case "POST":
-            if(isset($_GET['category']) == null){
-                echo json_encode(array('message'=> 'Missing Required Parameters'));
-                break;
-            } else{
             require_once('create.php');
             break;
-            }
         case "PUT":
-            if(isset($_GET['category']) == null){
-                echo json_encode(array('message'=> 'Missing Required Parameters'));
-                break;
-            } else{
-                require_once('update.php');
-                break;
-            }
+            require_once('update.php');
+            break;
         case "DELETE":
             require_once('delete.php');
             break;
