@@ -28,7 +28,7 @@
             require_once('read.php');
             break;
         case "POST":
-            if(isset($_GET['author']) == null){
+            if($_GET['author'] == null){
                 echo json_encode(array('message'=> 'Missing Required Parameters'));
                 break;
             } else{
@@ -36,7 +36,7 @@
             break;
             }
         case "PUT":
-            if(isset($_GET['author']) == null){
+            if($_GET['author'] == null){
                 echo json_encode(array('message'=> 'Missing Required Parameters'));
                 break;
             } else{

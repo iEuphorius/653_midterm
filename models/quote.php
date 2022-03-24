@@ -142,7 +142,7 @@
                     authorId = :authorId,
                     categoryId = :categoryId
                 WHERE
-                    id = ?';
+                    id = id';
 
             // prepare statement
             $stmt = $this->conn->prepare($query);

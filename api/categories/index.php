@@ -26,15 +26,15 @@
             require_once('read.php');
             break;
         case "POST":
-            if(isset($_GET['category']) == null){
+            if($_GET['category'] == null){
                 echo json_encode(array('message'=> 'Missing Required Parameters'));
                 break;
             } else{
-            require_once('create.php');
-            break;
+                require_once('create.php');
+                break;
             }
         case "PUT":
-            if(isset($_GET['category']) == null){
+            if($_GET['category'] == null){
                 echo json_encode(array('message'=> 'Missing Required Parameters'));
                 break;
             } else{
