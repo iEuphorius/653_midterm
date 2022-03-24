@@ -112,6 +112,7 @@
             $query = 'UPDATE ' . 
             $this->table . '
             SET
+                id = :id,
                 author = :author
             WHERE 
                 id = :id';
@@ -120,10 +121,13 @@
             $stmt = $this->conn->prepare($query);
 
             // clean data
+            $this->id = htmlspecialchars(strip_tags($this->id));
             $this->author = htmlspecialchars(strip_tags($this->author));
 
             // bind data
+            $stmt->bindParam(':id', $this->id);
             $stmt->bindParam(':author', $this->author);
+            
             // execute query
             if($stmt->execute()){
                 return true;

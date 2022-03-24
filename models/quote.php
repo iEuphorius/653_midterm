@@ -133,30 +133,34 @@
             $this->authorId = $row['authorId'];
         }
 
-        // update author
+        // update quote
         public function update() {
             // create query
             $query = 'UPDATE ' . 
-                $this->table . '
-                    quote = :quote,
-                    authorId = :authorId,
-                    categoryId = :categoryId
-                WHERE
-                    id = id';
+            $this->table . '
+            SET
+                id = :id,
+                quote = :quote,
+                authorId = :authorId,
+                categoryId = :categoryId
+            WHERE 
+                id = :id';
 
             // prepare statement
             $stmt = $this->conn->prepare($query);
 
             // clean data
+            $this->id = htmlspecialchars(strip_tags($this->id));
             $this->quote = htmlspecialchars(strip_tags($this->quote));
             $this->authorId = htmlspecialchars(strip_tags($this->authorId));
             $this->categoryId = htmlspecialchars(strip_tags($this->categoryId));
 
             // bind data
+            $stmt->bindParam(':id', $this->id);
             $stmt->bindParam(':quote', $this->quote);
             $stmt->bindParam(':authorId', $this->authorId);
             $stmt->bindParam(':categoryId', $this->categoryId);
-
+            
             // execute query
             if($stmt->execute()){
                 return true;

@@ -22,7 +22,7 @@ if($quote->create()){
     $lastId = $db->lastInsertId();
     $message = array(
         'id' => $lastId,
-        'quote' => $quote,
+        'quote' => $quote->quote,
         'authorId' => $quote->authorId,
         'categoryId' => $quote->categoryId
     );

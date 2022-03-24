@@ -1,6 +1,6 @@
 <?php
     include_once '../../config/database.php';
-    include_once '../../models/author.php';
+    include_once '../../models/category.php';
 
     // Instantiate DC & connect
 
@@ -17,7 +17,7 @@ $data = json_decode(file_get_contents("php://input"));
 $author->id = $data->id;
 $author->author = $data->author;
 
-// update category
+// update author
 if($author->update()){
     $message = array(
         'id' => $author->id,
